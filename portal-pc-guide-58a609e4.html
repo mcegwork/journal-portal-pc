@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>再访 · leyu | 轻量导航介绍页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #f7f5f0;
+      font-family: 'Georgia', 'Times New Roman', '宋体', serif;
+      color: #2e2b26;
+      line-height: 1.7;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fcfaf7;
+      border-radius: 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      padding: 2.8rem 2.2rem;
+    }
+    /* 顶部导航 */
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e5dfd6;
+      padding-bottom: 1.2rem;
+      margin-bottom: 2.8rem;
+    }
+    .nav-brand {
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: #3a3530;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #5b554e;
+      font-size: 0.95rem;
+      border-bottom: 1px dotted transparent;
+      transition: border-color 0.2s;
+    }
+    .nav-links a:hover {
+      border-bottom-color: #b3a597;
+    }
+    /* hero 区域 */
+    .hero {
+      margin-bottom: 3rem;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      color: #2a2621;
+      margin-bottom: 0.8rem;
+    }
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #6b6460;
+      border-left: 4px solid #cbbdb0;
+      padding-left: 1.2rem;
+      margin-top: 0.3rem;
+    }
+    .hero p {
+      margin-top: 1.2rem;
+      color: #4b4642;
+    }
+    /* 引用块 / 提示框 */
+    .highlight-box {
+      background: #efe9e1;
+      border-radius: 14px;
+      padding: 1.6rem 2rem;
+      margin: 2.2rem 0;
+      font-size: 0.98rem;
+      color: #3c3733;
+      box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
+    }
+    .highlight-box strong {
+      font-weight: 500;
+      color: #2b2723;
+    }
+    .highlight-box a {
+      color: #5f5146;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #c3b5a8;
+    }
+    .highlight-box a:hover {
+      text-decoration-color: #8f7d6e;
+    }
+    /* 场景卡片模块 */
+    .scene-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.8rem;
+      margin: 2.8rem 0 2rem;
+    }
+    .scene-card {
+      background: #f9f6f2;
+      border-radius: 18px;
+      padding: 1.8rem 1.4rem;
+      border: 1px solid #e8e0d7;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .scene-card:hover {
+      background: #f4efe8;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+    .scene-card h3 {
+      font-weight: 400;
+      font-size: 1.2rem;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.7rem;
+      color: #3d3732;
+    }
+    .scene-card p {
+      font-size: 0.92rem;
+      color: #59534d;
+    }
+    .scene-card .tag {
+      display: inline-block;
+      background: #ddd6cc;
+      color: #3d3732;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      letter-spacing: 0.02em;
+      margin-top: 0.8rem;
+    }
+    /* 常见说明 (FAQ 摘要) */
+    .faq-section {
+      margin-top: 3rem;
+      border-top: 1px solid #e5dfd6;
+      padding-top: 2rem;
+    }
+    .faq-section h2 {
+      font-weight: 400;
+      font-size: 1.5rem;
+      color: #2f2b27;
+      margin-bottom: 1.5rem;
+    }
+    .faq-item {
+      margin-bottom: 1.4rem;
+    }
+    .faq-item .q {
+      font-weight: 500;
+      color: #3c3631;
+      margin-bottom: 0.2rem;
+    }
+    .faq-item .a {
+      color: #5f5852;
+      font-size: 0.95rem;
+      padding-left: 0.8rem;
+      border-left: 2px solid #dbd2c8;
+    }
+    .faq-item .a a {
+      color: #5f5146;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .faq-item .a a:hover {
+      color: #3f352e;
+    }
+    /* footer 极小 */
+    .footer-note {
+      margin-top: 3.5rem;
+      font-size: 0.8rem;
+      color: #9a918a;
+      text-align: right;
+      border-top: 1px solid #ebe5dd;
+      padding-top: 1.5rem;
+    }
+    /* 响应式 */
+    @media (max-width: 600px) {
+      .container {
+        padding: 1.6rem 1rem;
+      }
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+      .scene-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- 导航 -->
+  <div class="nav">
+    <div class="nav-brand">leyu · 再访</div>
+    <div class="nav-links">
+      <a href="#intro">介绍</a>
+      <a href="#scenes">场景</a>
+      <a href="#faq">说明</a>
+      <a href="https://portal-pc-leyu.com">leyu</a>
+    </div>
+  </div>
+
+  <!-- hero / 再次访问角度 -->
+  <div class="hero" id="intro">
+    <h1>回到这里，如同翻开折角的书页</h1>
+    <div class="sub">—— 收藏、再访、持续关注</div>
+    <p>
+      有些页面值得被记住，不是因为一次新鲜感，而是因为它慢慢成为日常的一部分。<br>
+      如果你曾无意中离开，又或特意将链接收进书签，那么再次打开 <a href="https://portal-pc-leyu.com">leyu</a> 时，或许会感受到一种熟悉的平静——界面没有喧嚣，内容依旧简洁，入口始终安静地等在那里。
+    </p>
+  </div>
+
+  <!-- 提示框 / 引用块：关于收藏与持续关注 -->
+  <div class="highlight-box">
+    <strong>✧ 收藏者的便签</strong><br>
+    我们常常收藏很多链接，却很少再次打开。但 <a href="https://portal-pc-leyu.com">leyu</a> 是一个例外——它不追求让你每次都“眼前一亮”，而是提供一种稳定的陪伴感。就像书架上一本常翻的书，不需要刻意想起，却总在需要时触手可及。持续关注，并非因为推送或提醒，而是因为你知道那里始终有你需要的东西。
+  </div>
+
+  <!-- 三个场景模块 -->
+  <div id="scenes" style="margin-top:2.2rem;">
+    <h2 style="font-weight:400; font-size:1.4rem; color:#3d3732; margin-bottom:1rem;">三个安静的角落</h2>
+    <div class="scene-grid">
+      <div class="scene-card">
+        <h3>≋ 晨间索引</h3>
+        <p>清晨打开浏览器，从收藏夹里找到那个熟悉的入口。不需要登录或弹窗，直接进入内容区域。页面的节奏刚好匹配一杯咖啡的时间。</p>
+        <span class="tag">再次访问</span>
+      </div>
+      <div class="scene-card">
+        <h3>≋ 深夜书签</h3>
+        <p>深夜浏览时，把链接拖进书签栏。它不会频繁打扰你，但每次点开都像回到一个安静的角落。界面干净，没有冗余信息，适合沉浸式阅读。</p>
+        <span class="tag">收藏</span>
+      </div>
+      <div class="scene-card">
+        <h3>≋ 日常回访</h3>
+        <p>每隔一段时间，你会下意识地输入那个地址。不是因为有什么新消息，而是想确认那个空间还在，并且依旧保持着你喜欢的样子。持续关注的本质，是一种信任。</p>
+        <span class="tag">持续关注</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 常见说明 (FAQ 摘要) -->
+  <div class="faq-section" id="faq">
+    <h2>一些你可能想知道的</h2>
+    <div class="faq-item">
+      <div class="q">▸ 需要注册或登录才能使用吗？</div>
+      <div class="a">不需要。直接访问 <a href="https://portal-pc-leyu.com">leyu</a> 即可看到内容，没有强制注册流程。部分个性化功能可以根据自己的需求选择是否使用。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">▸ 内容更新频率是怎样的？</div>
+      <div class="a">保持稳定、克制的节奏。不会每日推送大量信息，而是注重质量和长期可读性。你可以根据自己的节奏回访，不会感到信息过载。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">▸ 我能否将页面添加到手机主屏幕？</div>
+      <div class="a">当然可以。页面采用自适应布局，在手机浏览器中打开后，使用“添加到主屏幕”功能即可像应用一样快速启动。再次访问时体验依旧流畅。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">▸ 页面会一直保持这样安静的风格吗？</div>
+      <div class="a">风格和内容方向会延续温和、不打扰的特质。即使有调整，也会保持干净、易读的基调。你的收藏夹可以放心留一个位置。</div>
+    </div>
+  </div>
+
+  <!-- footer 极简 -->
+  <div class="footer-note">
+    — 从再次访问到成为习惯 —
+  </div>
+</div>
+</body>
+</html>
